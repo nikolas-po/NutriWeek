@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutriWeek — Готовые рационы на неделю</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">NutriWeek</a>
+      <nav class="nav">
+        <a href="index.html" class="active">Главная</a>
+        <a href="menu.html">Меню</a>
+      </nav>
+      <button class="cart-btn" onclick="openCart()">
+        🛒 <span class="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-main">
+          <h1>Готовые рационы<br>на неделю под ваши цели</h1>
+          <p>Похудение • Набор массы • Веганские меню</p>
+          <p>Точный КБЖУ • Доставка 2 раза в неделю</p>
+          <div class="hero-actions">
+            <a href="menu.html" class="btn btn-primary">Подобрать рацион</a>
+            <a href="menu.html" class="btn btn-outline">Смотреть меню</a>
+          </div>
+        </div>
+        <div class="hero-cards">
+          <a href="menu.html" class="goal-card">
+            <div class="goal-icon" style="background:#DCFCE7">🥗</div>
+            <h3>Похудение</h3>
+            <div class="kcal">1200–1500 ккал</div>
+            <div class="price">от 4 500 ₽</div>
+          </a>
+          <a href="menu.html" class="goal-card">
+            <div class="goal-icon" style="background:#FEF3C7">💪</div>
+            <h3>Набор массы</h3>
+            <div class="kcal">2200–2800 ккал</div>
+            <div class="price">от 5 900 ₽</div>
+          </a>
+          <a href="menu.html" class="goal-card">
+            <div class="goal-icon" style="background:#D1FAE5">🌱</div>
+            <h3>Веган</h3>
+            <div class="kcal">1400–2000 ккал</div>
+            <div class="price">от 5 100 ₽</div>
+          </a>
+          <a href="menu.html" class="goal-card">
+            <div class="goal-icon" style="background:#E0E7FF">⚖️</div>
+            <h3>Поддержание</h3>
+            <div class="kcal">1800–2200 ккал</div>
+            <div class="price">от 5 200 ₽</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Популярные рационы</h2>
+      <div class="products-grid" id="popular-grid">
+        <!-- filled by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© 2026 NutriWeek • Готовые рационы с доставкой</span>
+      <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+    </div>
+  </footer>
+
+  <!-- Cart Drawer -->
+  <div class="cart-overlay" id="cart-overlay">
+    <div class="cart-drawer">
+      <div class="cart-header">
+        <h2>Корзина</h2>
+        <button class="cart-close" onclick="closeCart()">×</button>
+      </div>
+      <div class="cart-body" id="cart-body"></div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Итого</span>
+          <span class="sum" id="cart-total-sum">0 ₽</span>
+        </div>
+        <button class="btn btn-primary" onclick="showToast('Заказ оформлен! (демо)')">Оформить заказ</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    // Popular products on home
+    document.addEventListener('DOMContentLoaded', () => {
+      const popular = ['slim-1400', 'power-2500', 'vegan-1800', 'balance-2000'];
+      const grid = document.getElementById('popular-grid');
+      if (grid) {
+        grid.innerHTML = popular.map(id => {
+          const p = PRODUCTS.find(pr => pr.id === id);
+          return p ? productCardHTML(p) : '';
+        }).join('');
+      }
+    });
+  </script>
+</body>
+</html>

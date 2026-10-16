@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рацион — NutriWeek</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">NutriWeek</a>
+      <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="menu.html">Меню</a>
+      </nav>
+      <button class="cart-btn" onclick="openCart()">
+        🛒 <span class="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <section class="product-page">
+    <div class="container">
+      <div class="breadcrumbs" id="breadcrumbs">Меню / Рацион</div>
+
+      <div class="product-detail">
+        <!-- Gallery -->
+        <div class="product-gallery">
+          <div class="main-img">
+            <img id="main-img" src="" alt="">
+          </div>
+          <div class="thumbs">
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200&h=150&fit=crop" class="active" onclick="document.getElementById('main-img').src=this.src.replace('w=200','w=600')">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=200&h=150&fit=crop" onclick="document.getElementById('main-img').src=this.src.replace('w=200','w=600')">
+            <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=200&h=150&fit=crop" onclick="document.getElementById('main-img').src=this.src.replace('w=200','w=600')">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=200&h=150&fit=crop" onclick="document.getElementById('main-img').src=this.src.replace('w=200','w=600')">
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="product-info">
+          <h1 id="product-name">—</h1>
+          <div class="subtitle" id="product-subtitle">—</div>
+
+          <div class="tags">
+            <span class="tag tag-green" id="tag-kcal">—</span>
+            <span class="tag tag-yellow" id="tag-goal">—</span>
+          </div>
+
+          <div class="product-price">
+            <span id="product-price">—</span> <span>₽ / неделя</span>
+          </div>
+
+          <div class="kbju-box">
+            <div class="label">КБЖУ в день</div>
+            <div class="kbju-values">
+              <span id="product-kcal">—</span>
+              <span id="product-protein">—</span>
+              <span id="product-fat">—</span>
+              <span id="product-carbs">—</span>
+            </div>
+          </div>
+
+          <div class="product-actions">
+            <button class="btn btn-primary" id="add-to-cart-btn" style="min-width:200px">В корзину</button>
+            <button class="btn btn-outline" onclick="showToast('Подписка скоро будет доступна')">Подписка</button>
+          </div>
+
+          <div class="product-desc">
+            <h3>Описание</h3>
+            <p id="product-desc">—</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu for the week -->
+      <div class="menu-week">
+        <h2>Меню на неделю</h2>
+        <div class="days-grid" id="menu-days">
+          <!-- filled by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© 2026 NutriWeek • Готовые рационы с доставкой</span>
+      <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+    </div>
+  </footer>
+
+  <!-- Cart -->
+  <div class="cart-overlay" id="cart-overlay">
+    <div class="cart-drawer">
+      <div class="cart-header">
+        <h2>Корзина</h2>
+        <button class="cart-close" onclick="closeCart()">×</button>
+      </div>
+      <div class="cart-body" id="cart-body"></div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Итого</span>
+          <span class="sum" id="cart-total-sum">0 ₽</span>
+        </div>
+        <button class="btn btn-primary" onclick="showToast('Заказ оформлен! (демо)')">Оформить заказ</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
